@@ -1,61 +1,55 @@
 package com.atguigu.gulimall.product;
 
+
+import com.aliyun.oss.OSS;
+import com.aliyun.oss.OSSClient;
+import com.aliyun.oss.OSSClientBuilder;
 import com.atguigu.gulimall.product.entity.BrandEntity;
-import com.atguigu.gulimall.product.entity.CategoryEntity;
 import com.atguigu.gulimall.product.service.BrandService;
-import com.atguigu.gulimall.product.service.CategoryService;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import lombok.extern.slf4j.Slf4j;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.annotation.Resource;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
-@Slf4j
-@RunWith(SpringRunner.class)
+
 @SpringBootTest
-public class GulimallProductApplicationTests {
+class GulimallProductApplicationTests {
 
     @Autowired
-    BrandService brandService;
+    private BrandService brandService;
 
-    @Autowired
-    CategoryService categoryService;
 
-    @Test
-    public void testFindPath(){
-        Long[] catelogPath = categoryService.findCatelogPath(225L);
-        log.info("完整路径: {}",Arrays.asList(catelogPath));
-    }
 
     @Test
-    public void contextLoads() {
-
+    void contextLoads() {
         BrandEntity brandEntity = new BrandEntity();
-//
-//        brandEntity.setBrandId(1L);
-//        brandEntity.setDescript("华为");
-
-//        brandEntity.setDescript("1L");
-//        brandEntity.setName("华为");
-//        brandService.save(brandEntity);
-//        System.out.println("保存成功");
-
-        brandService.updateById(brandEntity);
-
-        List<BrandEntity> list = brandService.list(new QueryWrapper<BrandEntity>().eq("brand_id",1L));
-        list.forEach((item)->{
-            System.out.println(item);
-        });
+        brandEntity.setName("测试");
+        brandService.save(brandEntity);
+        System.out.println("保存成功");
     }
 
+
+    //阿里云 oss 简单上传图片示例
+    @Test
+    public void upload() throws Exception {
+        // Endpoint以杭州为例，其它Region请按实际情况填写。
+        String endpoint = "oss-cn-beijing.aliyuncs.com";
+        // 云账号AccessKey有所有API访问权限，建议遵循阿里云安全最佳实践，创建并使用RAM子账号进行API访问或日常运维，请登录 https://ram.console.aliyun.com 创建。
+        String accessKeyId = "LTAI4G1B2EvoyW4NHj3awAJL";
+        String accessKeySecret = "uh0AVj6ZVGlsKSUH41CPMkXMzx00yz";
+
+        // 创建OSSClient实例。
+        OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
+
+        // 上传文件流。
+        InputStream inputStream = new FileInputStream("D:\\dest\\谷粒商城\\资料源码\\docs\\pics\\0d40c24b264aa511.jpg");
+        ossClient.putObject("chengulimall", "0d40c24b264aa511.jpg", inputStream);
+
+        // 关闭OSSClient。
+        ossClient.shutdown();
+        System.out.println("上传完成...");
+    }
 }

@@ -10,9 +10,9 @@ import lombok.Data;
 /**
  * 积分变化历史记录
  * 
- * @author guoxiaolong
- * @email 18240885452@163.com
- * @date 2020-05-16 16:24:20
+ * @author chen
+ * @email 15149157257@sina.cn
+ * @date 2020-10-06 17:45:50
  */
 @Data
 @TableName("ums_integration_change_history")

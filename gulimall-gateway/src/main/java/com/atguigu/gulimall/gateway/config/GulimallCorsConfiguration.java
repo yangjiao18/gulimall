@@ -6,11 +6,17 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.reactive.CorsWebFilter;
 import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 
+/**
+ * @ClassDesc:功能描述 解决跨域 浏览器同源策略问题
+ * @author: chen
+ * @CreateTime:2020/10/8 11:07
+ * @version: 1.0
+ * @copyright: 个人项目
+ */
 @Configuration
 public class GulimallCorsConfiguration {
-
     @Bean
-    public CorsWebFilter corsWebFilter(){
+    public CorsWebFilter corsWebFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 
         CorsConfiguration corsConfiguration = new CorsConfiguration();
@@ -21,7 +27,7 @@ public class GulimallCorsConfiguration {
         corsConfiguration.addAllowedOrigin("*");
         corsConfiguration.setAllowCredentials(true);
 
-        source.registerCorsConfiguration("/**",corsConfiguration);
+        source.registerCorsConfiguration("/**", corsConfiguration);
         return new CorsWebFilter(source);
     }
 }

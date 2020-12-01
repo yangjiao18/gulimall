@@ -7,9 +7,9 @@ import org.apache.ibatis.annotations.Mapper;
 /**
  * 首页轮播广告
  * 
- * @author leifengyang
- * @email leifengyang@gmail.com
- * @date 2019-10-08 09:36:40
+ * @author chen
+ * @email 15149157257@sina.cn
+ * @date 2020-10-06 17:48:49
  */
 @Mapper
 public interface HomeAdvDao extends BaseMapper<HomeAdvEntity> {

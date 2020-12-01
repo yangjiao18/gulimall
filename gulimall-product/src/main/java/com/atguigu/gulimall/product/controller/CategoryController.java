@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+//import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,13 +18,12 @@ import com.atguigu.common.utils.PageUtils;
 import com.atguigu.common.utils.R;
 
 
-
 /**
  * 商品三级分类
  *
- * @author guoxiaolong
- * @email 18240885452@163.com
- * @date 2020-05-16 02:48:45
+ * @author chen
+ * @email 15149157257@sina.cn
+ * @date 2020-10-06 17:33:25
  */
 @RestController
 @RequestMapping("product/category")
@@ -32,14 +32,24 @@ public class CategoryController {
     private CategoryService categoryService;
 
     /**
-     * 查出所有分类，以及子分类，以属性结构组装起来
+     * 列表
+     */
+    @RequestMapping("/list")
+    //@RequiresPermissions("product:category:list")
+    public R list(@RequestParam Map<String, Object> params) {
+        PageUtils page = categoryService.queryPage(params);
+
+        return R.ok().put("page", page);
+    }
+
+    /**
+     * 三级树形列表
      */
     @RequestMapping("/list/tree")
-    public R list(){
-
-        List<CategoryEntity> entities = categoryService.listWithTree();
-
-        return R.ok().put("data", entities);
+    //@RequiresPermissions("product:category:list")
+    public R listTree() {
+        List<CategoryEntity> list = categoryService.listWithTree();
+        return R.ok().put("data", list);
     }
 
 
@@ -48,7 +58,7 @@ public class CategoryController {
      */
     @RequestMapping("/info/{catId}")
     //@RequiresPermissions("product:category:info")
-    public R info(@PathVariable("catId") Long catId){
+    public R info(@PathVariable("catId") Long catId) {
         CategoryEntity category = categoryService.getById(catId);
 
         return R.ok().put("data", category);
@@ -59,16 +69,8 @@ public class CategoryController {
      */
     @RequestMapping("/save")
     //@RequiresPermissions("product:category:save")
-    public R save(@RequestBody CategoryEntity category){
+    public R save(@RequestBody CategoryEntity category) {
         categoryService.save(category);
-
-        return R.ok();
-    }
-
-    @RequestMapping("/update/sort")
-    //@RequiresPermissions("product:category:update")
-    public R updateSort(@RequestBody CategoryEntity[] category){
-        categoryService.updateBatchById(Arrays.asList(category));
 
         return R.ok();
     }
@@ -78,23 +80,21 @@ public class CategoryController {
      */
     @RequestMapping("/update")
     //@RequiresPermissions("product:category:update")
-    public R update(@RequestBody CategoryEntity category){
-        categoryService.updateCascade(category);
+    public R update(@RequestBody CategoryEntity category) {
+        categoryService.updateById(category);
 
         return R.ok();
     }
 
     /**
      * 删除
-     * (@RequestBody 获取请求体，必须发送POAT请求
-     * SpringMVC自动将请求体的数据(json)，转为对应的对象
-     *
+     * @RequestBody 获取请求体 必须是POST请求
      */
     @RequestMapping("/delete")
     //@RequiresPermissions("product:category:delete")
-    public R delete(@RequestBody Long[] catIds){
-        //categoryService.removeByIds(Arrays.asList(catIds));
-        categoryService.removeMenuByIds(Arrays.asList(catIds));
+    public R delete(@RequestBody Long[] catIds) {
+        //TODO 需要判断是否被引用
+        categoryService.removeByIds(Arrays.asList(catIds));
         return R.ok();
     }
 

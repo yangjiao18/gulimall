@@ -11,9 +11,9 @@ import lombok.Data;
 /**
  * 退款信息
  * 
- * @author guoxiaolong
- * @email 18240885452@163.com
- * @date 2020-05-16 16:32:37
+ * @author chen
+ * @email 15149157257@sina.cn
+ * @date 2020-10-06 17:38:21
  */
 @Data
 @TableName("oms_refund_info")

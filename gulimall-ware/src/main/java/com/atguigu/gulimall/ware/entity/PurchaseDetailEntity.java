@@ -11,9 +11,9 @@ import lombok.Data;
 /**
  * 
  * 
- * @author leifengyang
- * @email leifengyang@gmail.com
- * @date 2019-11-17 13:50:10
+ * @author chen
+ * @email 15149157257@sina.cn
+ * @date 2020-10-06 17:42:44
  */
 @Data
 @TableName("wms_purchase_detail")

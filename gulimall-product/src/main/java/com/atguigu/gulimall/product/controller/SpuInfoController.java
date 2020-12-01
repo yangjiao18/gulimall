@@ -3,7 +3,7 @@ package com.atguigu.gulimall.product.controller;
 import java.util.Arrays;
 import java.util.Map;
 
-import com.atguigu.gulimall.product.vo.SpuSaveVo;
+//import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,9 +21,9 @@ import com.atguigu.common.utils.R;
 /**
  * spu信息
  *
- * @author guoxiaolong
- * @email 18240885452@163.com
- * @date 2020-05-16 02:48:45
+ * @author chen
+ * @email 15149157257@sina.cn
+ * @date 2020-10-06 17:33:26
  */
 @RestController
 @RequestMapping("product/spuinfo")
@@ -59,10 +59,8 @@ public class SpuInfoController {
      */
     @RequestMapping("/save")
     //@RequiresPermissions("product:spuinfo:save")
-    public R save(@RequestBody SpuSaveVo vo){
-		//spuInfoService.save(spuInfo);
-
-        spuInfoService.saveSpuInfo(vo);
+    public R save(@RequestBody SpuInfoEntity spuInfo){
+		spuInfoService.save(spuInfo);
 
         return R.ok();
     }

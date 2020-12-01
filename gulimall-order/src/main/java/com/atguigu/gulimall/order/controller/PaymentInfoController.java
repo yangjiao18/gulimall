@@ -3,6 +3,7 @@ package com.atguigu.gulimall.order.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+//import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,9 +21,9 @@ import com.atguigu.common.utils.R;
 /**
  * 支付信息表
  *
- * @author guoxiaolong
- * @email 18240885452@163.com
- * @date 2020-05-16 16:32:36
+ * @author chen
+ * @email 15149157257@sina.cn
+ * @date 2020-10-06 17:38:22
  */
 @RestController
 @RequestMapping("order/paymentinfo")

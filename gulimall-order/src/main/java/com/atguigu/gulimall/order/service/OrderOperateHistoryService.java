@@ -9,9 +9,9 @@ import java.util.Map;
 /**
  * 订单操作历史记录
  *
- * @author guoxiaolong
- * @email 18240885452@163.com
- * @date 2020-05-16 16:32:37
+ * @author chen
+ * @email 15149157257@sina.cn
+ * @date 2020-10-06 17:38:21
  */
 public interface OrderOperateHistoryService extends IService<OrderOperateHistoryEntity> {
 

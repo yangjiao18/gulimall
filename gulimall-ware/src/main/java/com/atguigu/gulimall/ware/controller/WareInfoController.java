@@ -3,6 +3,7 @@ package com.atguigu.gulimall.ware.controller;
 import java.util.Arrays;
 import java.util.Map;
 
+//import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,9 +21,9 @@ import com.atguigu.common.utils.R;
 /**
  * 仓库信息
  *
- * @author leifengyang
- * @email leifengyang@gmail.com
- * @date 2019-10-08 09:59:40
+ * @author chen
+ * @email 15149157257@sina.cn
+ * @date 2020-10-06 17:42:44
  */
 @RestController
 @RequestMapping("ware/wareinfo")
