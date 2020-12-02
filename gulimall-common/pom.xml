@@ -79,11 +79,17 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
         </dependency>
-<!--        &lt;!&ndash;阿里云 oss&ndash;&gt;
         <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>aliyun-oss-spring-boot-starter</artifactId>
-        </dependency>-->
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+            <version>2.0.2</version>
+            <scope>compile</scope>
+        </dependency>
+        <!--        &lt;!&ndash;阿里云 oss&ndash;&gt;
+                <dependency>
+                    <groupId>com.alibaba.cloud</groupId>
+                    <artifactId>aliyun-oss-spring-boot-starter</artifactId>
+                </dependency>-->
     </dependencies>
 
     <!--这将允许您忽略任何Maven依赖项的版本，而是将版本委派给BOM。-->
