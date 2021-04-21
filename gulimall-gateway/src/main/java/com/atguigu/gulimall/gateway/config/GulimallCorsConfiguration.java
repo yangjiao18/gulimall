@@ -7,7 +7,7 @@ import org.springframework.web.cors.reactive.CorsWebFilter;
 import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 
 /**
- * @author 孟享广
+ * @author jackCode
  * @date 2020-12-18 5:22 下午
  * @description
  */

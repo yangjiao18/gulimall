@@ -5,7 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 /**
- * @author 孟享广
+ * @author jackCode
  * @date 2021-01-27 4:12 下午
  * @description
  */

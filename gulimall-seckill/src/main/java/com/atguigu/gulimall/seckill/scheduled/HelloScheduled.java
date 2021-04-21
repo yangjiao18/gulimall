@@ -6,7 +6,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 /**
- * @author 孟享广
+ * @author jackCode
  * @date 2021-02-19 2:36 下午
  * @description
  * 定时任务

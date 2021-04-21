@@ -6,7 +6,7 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 /**
- * @author 孟享广
+ * @author jackCode
  * @date 2021-02-20 1:57 下午
  * @description
  */

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * @author 孟享广
+ * @author jackCode
  * @date 2021-02-22 2:19 下午
  * @description sentinel自定义返回方法
  */

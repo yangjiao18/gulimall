@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 import java.util.UUID;
 
 /**
- * @author 孟享广
+ * @author jackCode
  * @date 2021-02-03 3:01 下午
  * @description 在执行目标方法之前，判断用户的登录状态，并封装传递给controller的目标请求
  */

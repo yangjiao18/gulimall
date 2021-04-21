@@ -1,7 +1,7 @@
 package com.atguigu.gulimall.member.exception;
 
 /**
- * @author 孟享广
+ * @author jackCode
  * @date 2021-01-29 4:51 下午
  * @description
  */

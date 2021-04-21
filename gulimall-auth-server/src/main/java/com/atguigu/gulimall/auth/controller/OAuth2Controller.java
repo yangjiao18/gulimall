@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author 孟享广
+ * @author jackCode
  * @date 2021-01-31 2:03 下午
  * @description 处理社交登录请求
  */

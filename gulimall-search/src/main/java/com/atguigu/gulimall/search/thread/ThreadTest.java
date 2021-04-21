@@ -3,7 +3,7 @@ package com.atguigu.gulimall.search.thread;
 import java.util.concurrent.*;
 
 /**
- * @author 孟享广
+ * @author jackCode
  * @date 2021-01-20 10:49 上午
  * @description
  */

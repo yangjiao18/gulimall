@@ -1,7 +1,7 @@
 package com.atguigu.common.constant;
 
 /**
- * @author 孟享广
+ * @author jackCode
  * @date 2021-02-03 3:37 下午
  * @description
  */

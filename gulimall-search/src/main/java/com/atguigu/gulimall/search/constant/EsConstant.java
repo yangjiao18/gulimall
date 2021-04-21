@@ -1,7 +1,7 @@
 package com.atguigu.gulimall.search.constant;
 
 /**
- * @author 孟享广
+ * @author jackCode
  * @date 2021-01-05 2:31 下午
  * @description
  */

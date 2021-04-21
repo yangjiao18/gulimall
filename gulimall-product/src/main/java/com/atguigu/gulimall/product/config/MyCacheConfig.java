@@ -11,7 +11,7 @@ import org.springframework.data.redis.serializer.RedisSerializationContext;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 /**
- * @author 孟享广
+ * @author jackCode
  * @date 2021-01-13 10:05 上午
  * @description  整合Spring Cache 的相关配置
  */

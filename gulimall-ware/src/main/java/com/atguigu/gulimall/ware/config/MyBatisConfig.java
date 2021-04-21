@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
- * @author 孟享广
+ * @author jackCode
  * @date 2020-12-23 10:57 上午
  * @description
  */

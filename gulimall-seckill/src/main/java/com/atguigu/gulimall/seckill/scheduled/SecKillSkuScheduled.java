@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.concurrent.TimeUnit;
 
 /**
- * @author 孟享广
+ * @author jackCode
  * @date 2021-02-20 10:55 上午
  * @description 秒杀商品到定时上架
  *  每天晚上3:00 ：上架最近三天需要秒杀的商品

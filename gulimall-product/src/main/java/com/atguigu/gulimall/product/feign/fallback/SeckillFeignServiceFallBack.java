@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 /**
- * @author 孟享广
+ * @author jackCode
  * @date 2021-02-22 4:15 下午
  * @description feign sentinel 熔断保护方法
  */

@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @author 孟享广
+ * @author jackCode
  * @date 2021-01-02 11:41 上午
  * @description
  * 1 导入依赖

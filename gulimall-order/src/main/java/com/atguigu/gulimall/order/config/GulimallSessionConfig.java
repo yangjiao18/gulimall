@@ -9,7 +9,7 @@ import org.springframework.session.web.http.CookieSerializer;
 import org.springframework.session.web.http.DefaultCookieSerializer;
 
 /**
- * @author 孟享广
+ * @author jackCode
  * @date 2021-02-01 1:07 下午
  * @description
  */

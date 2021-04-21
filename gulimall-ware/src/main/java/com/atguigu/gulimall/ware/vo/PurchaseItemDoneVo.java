@@ -3,7 +3,7 @@ package com.atguigu.gulimall.ware.vo;
 import lombok.Data;
 
 /**
- * @author 孟享广
+ * @author jackCode
  * @date 2020-12-27 4:40 下午
  * @description
  */

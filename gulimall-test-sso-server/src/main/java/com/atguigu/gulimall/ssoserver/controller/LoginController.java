@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.UUID;
 
 /**
- * @author 孟享广
+ * @author jackCode
  * @date 2021-02-02 12:05 下午
  * @description
  * 1 给登录服务器留下登录痕迹

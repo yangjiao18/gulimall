@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author 孟享广
+ * @author jackCode
  * @date 2021-02-06 11:47 上午
  * @description创建RabbitMQ 队列 交换机
  * 运行之前，一定要小心，否则要删除队列/交换机重新运行 麻烦！

@@ -5,7 +5,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
- * @author 孟享广
+ * @author jackCode
  * @date 2021-02-20 11:25 上午
  * @description
  */

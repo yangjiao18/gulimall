@@ -5,7 +5,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
- * @author 孟享广
+ * @author jackCode
  * @date 2021-02-19 2:37 下午
  * @description
  *  @EnableScheduling 开启定时任务功能

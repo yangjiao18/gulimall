@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author 孟享广
+ * @author jackCode
  * @date 2021-02-07 1:49 下午
  * @description 订单确认页需要的数据
  */

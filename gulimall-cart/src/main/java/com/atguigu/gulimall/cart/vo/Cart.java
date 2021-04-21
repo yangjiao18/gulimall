@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 /**
- * @author 孟享广
+ * @author jackCode
  * @date 2021-02-03 12:33 下午
  * @description 整个购物车
  * @Data 不用的原因
