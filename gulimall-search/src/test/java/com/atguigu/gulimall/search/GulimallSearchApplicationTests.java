@@ -1,7 +1,7 @@
 package com.atguigu.gulimall.search;
 
 import com.alibaba.fastjson.JSON;
-import com.atguigu.gulimall.search.config.GulimallElasticSearchConfig;
+import com.atguigu.gulimall.search.config.GuliMallElasticSearchConfig;
 import lombok.Data;
 import lombok.ToString;
 import org.elasticsearch.action.index.IndexRequest;
@@ -80,7 +80,7 @@ public class GulimallSearchApplicationTests {
         searchRequest.source(sourceBuilder);
 
         //2 执行检索
-        SearchResponse searchResponse = client.search(searchRequest, GulimallElasticSearchConfig.COMMON_OPTIONS);
+        SearchResponse searchResponse = client.search(searchRequest, GuliMallElasticSearchConfig.COMMON_OPTIONS);
 
         //3 分析结果 searchResponse
         System.out.println("打印分析结果-> " + searchResponse.toString());
@@ -131,7 +131,7 @@ public class GulimallSearchApplicationTests {
         indexRequest.source(jsonString, XContentType.JSON);//要保存的内容
 
         //执行真正的保存操作
-        IndexResponse index = client.index(indexRequest, GulimallElasticSearchConfig.COMMON_OPTIONS);
+        IndexResponse index = client.index(indexRequest, GuliMallElasticSearchConfig.COMMON_OPTIONS);
 
         //提取有用的相应数据
         System.out.println(index);

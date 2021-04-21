@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
 import com.atguigu.common.to.es.SkuEsModel;
 import com.atguigu.common.utils.R;
-import com.atguigu.gulimall.search.config.GulimallElasticSearchConfig;
+import com.atguigu.gulimall.search.config.GuliMallElasticSearchConfig;
 import com.atguigu.gulimall.search.constant.EsConstant;
 import com.atguigu.gulimall.search.feign.ProductFeignService;
 import com.atguigu.gulimall.search.service.MallSearchService;
@@ -22,7 +22,6 @@ import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.index.query.RangeQueryBuilder;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHits;
-import org.elasticsearch.search.aggregations.Aggregation;
 import org.elasticsearch.search.aggregations.AggregationBuilders;
 import org.elasticsearch.search.aggregations.bucket.nested.NestedAggregationBuilder;
 import org.elasticsearch.search.aggregations.bucket.nested.ParsedNested;
@@ -62,6 +61,7 @@ public class MallSearchServiceImpl implements MallSearchService {
 
     /**
      * 去es进行检索
+     *
      * @param param 检索的所有参数
      * @return 返回检索的结果
      */
@@ -75,7 +75,7 @@ public class MallSearchServiceImpl implements MallSearchService {
 
         try {
             //2 执行检索请求
-            SearchResponse response = client.search(searchRequest, GulimallElasticSearchConfig.COMMON_OPTIONS);
+            SearchResponse response = client.search(searchRequest, GuliMallElasticSearchConfig.COMMON_OPTIONS);
 
             //3 分析响应数据，封装成我们需要的格式
             result = buildSearchResult(response, param);
@@ -90,7 +90,8 @@ public class MallSearchServiceImpl implements MallSearchService {
      * 模糊匹配 过滤 按照属性 分类 品牌 价格区间 库存 排序 分页 高亮 聚合分析
      */
     private SearchRequest buildSearchRequest(SearchParam param) {
-        SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();//构建DSL语句
+        //构建DSL语句
+        SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
 
         /**
          * 模糊匹配 过滤 按照属性 分类 品牌 价格区间 库存
@@ -160,7 +161,7 @@ public class MallSearchServiceImpl implements MallSearchService {
         if (!StringUtils.isEmpty(param.getSort())) {
             //sort=saleCount_asc/desc 倒序
             String[] s = param.getSort().split("_");
-            SortOrder order = s[1].equalsIgnoreCase("asc")?SortOrder.ASC:SortOrder.DESC;
+            SortOrder order = s[1].equalsIgnoreCase("asc") ? SortOrder.ASC : SortOrder.DESC;
             sourceBuilder.sort(s[0], order);
         }
         //2.2 分页 每页5个，
@@ -216,6 +217,7 @@ public class MallSearchServiceImpl implements MallSearchService {
     /**
      * 构建结果数据
      * 根据es查询到的结果，分析得到页面真正得到的数据模型
+     *
      * @param response
      * @param param
      * @return
@@ -314,7 +316,7 @@ public class MallSearchServiceImpl implements MallSearchService {
         long total = hits.getTotalHits().value;
         result.setTotal(total);
         //5 分页信息 - 总页码 计算得到 11 / 2 = 5 ... 1
-        int totalPages = (int)total % EsConstant.PRODUCT_PAGESIZE == 0?(int)total/EsConstant.PRODUCT_PAGESIZE:(int)(total/EsConstant.PRODUCT_PAGESIZE + 1);
+        int totalPages = (int) total % EsConstant.PRODUCT_PAGESIZE == 0 ? (int) total / EsConstant.PRODUCT_PAGESIZE : (int) (total / EsConstant.PRODUCT_PAGESIZE + 1);
         result.setTotalPages(totalPages);
 
         //页码导航
@@ -336,7 +338,8 @@ public class MallSearchServiceImpl implements MallSearchService {
                 result.getAttrIds().add(Long.parseLong(s[0]));
                 if (r.getCode() == 0) {
                     //正常返回
-                    AttrResponseVo data = r.getData("attr", new TypeReference<AttrResponseVo>() {});
+                    AttrResponseVo data = r.getData("attr", new TypeReference<AttrResponseVo>() {
+                    });
                     navVo.setNavName(data.getAttrName());
                 } else {
                     //如果失败
@@ -353,19 +356,20 @@ public class MallSearchServiceImpl implements MallSearchService {
         }
 
         //品牌，分类 面包屑
-        if(param.getBrandId() != null && param.getBrandId().size()>0) {
+        if (param.getBrandId() != null && param.getBrandId().size() > 0) {
             List<SearchResult.NavVo> navs = result.getNavs();
             SearchResult.NavVo navVo = new SearchResult.NavVo();
             navVo.setNavName("品牌");
             //TODO 远程查询
             R r = productFeignService.BrandsInfo(param.getBrandId());
             if (r.getCode() == 0) {
-                List<BrandVo> brands = r.getData("brand", new TypeReference<List<BrandVo>>() {});
+                List<BrandVo> brands = r.getData("brand", new TypeReference<List<BrandVo>>() {
+                });
                 StringBuffer buffer = new StringBuffer();
                 String replace = "";
                 for (BrandVo brandVo : brands) {
                     buffer.append(brandVo.getName() + ";");
-                    replace = replaceQueryString(param, brandVo.getBrandId()+"", "brandId");
+                    replace = replaceQueryString(param, brandVo.getBrandId() + "", "brandId");
                 }
                 navVo.setNavValue(buffer.toString());
                 navVo.setLink("http://search.gulimall.com/list.html?" + replace);
@@ -378,15 +382,15 @@ public class MallSearchServiceImpl implements MallSearchService {
     }
 
     //编写面包屑的功能时，删除指定请求
-    private String replaceQueryString(SearchParam param, String value,String key) {
+    private String replaceQueryString(SearchParam param, String value, String key) {
         String encode = "";
         try {
             encode = URLEncoder.encode(value, "UTF-8");
             //+ 对应浏览器的%20编码
-            encode = encode.replace("+","%20");
+            encode = encode.replace("+", "%20");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        return  param.get_queryString().replace("&" + key + "=" + encode, "");
+        return param.get_queryString().replace("&" + key + "=" + encode, "");
     }
 }
