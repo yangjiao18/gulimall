@@ -50,7 +50,6 @@ public class LoginRegController {
     public R sendCode(@RequestParam("phone") String phone) {
 
         //TODO 1 接口防刷
-
         //验证码60s内
         String redisCode = stringRedisTemplate.opsForValue().get(AuthServiceConstant.SMS_CODE_CACHE_PREFIX + phone);
         if (!StringUtils.isEmpty(redisCode)) {
