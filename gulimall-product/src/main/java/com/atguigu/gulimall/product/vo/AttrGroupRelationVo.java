@@ -3,12 +3,12 @@ package com.atguigu.gulimall.product.vo;
 import lombok.Data;
 
 /**
- * @author gxl
- * @date 2020/5/31 - 1:52
+ * @author 孟享广
+ * @date 2020-12-24 11:16 上午
+ * @description
  */
 @Data
-public class AttrGroupRelationVo {
-   //"attrId":1, "attrGroupId":2
+public class AttrGroupRelationVo{
     private Long attrId;
     private Long attrGroupId;
 }

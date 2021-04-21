@@ -3,7 +3,6 @@ package com.atguigu.gulimall.coupon.controller;
 import java.util.Arrays;
 import java.util.Map;
 
-//import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,9 +20,9 @@ import com.atguigu.common.utils.R;
 /**
  * 商品阶梯价格
  *
- * @author chen
- * @email 15149157257@sina.cn
- * @date 2020-10-06 17:48:49
+ * @author mxg
+ * @email mxg@gmail.com
+ * @date 2020-12-16 11:38:31
  */
 @RestController
 @RequestMapping("coupon/skuladder")
@@ -35,7 +34,6 @@ public class SkuLadderController {
      * 列表
      */
     @RequestMapping("/list")
-    //@RequiresPermissions("coupon:skuladder:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = skuLadderService.queryPage(params);
 
@@ -47,7 +45,6 @@ public class SkuLadderController {
      * 信息
      */
     @RequestMapping("/info/{id}")
-    //@RequiresPermissions("coupon:skuladder:info")
     public R info(@PathVariable("id") Long id){
 		SkuLadderEntity skuLadder = skuLadderService.getById(id);
 
@@ -58,7 +55,6 @@ public class SkuLadderController {
      * 保存
      */
     @RequestMapping("/save")
-    //@RequiresPermissions("coupon:skuladder:save")
     public R save(@RequestBody SkuLadderEntity skuLadder){
 		skuLadderService.save(skuLadder);
 
@@ -69,7 +65,6 @@ public class SkuLadderController {
      * 修改
      */
     @RequestMapping("/update")
-    //@RequiresPermissions("coupon:skuladder:update")
     public R update(@RequestBody SkuLadderEntity skuLadder){
 		skuLadderService.updateById(skuLadder);
 
@@ -80,7 +75,6 @@ public class SkuLadderController {
      * 删除
      */
     @RequestMapping("/delete")
-    //@RequiresPermissions("coupon:skuladder:delete")
     public R delete(@RequestBody Long[] ids){
 		skuLadderService.removeByIds(Arrays.asList(ids));
 

@@ -3,7 +3,6 @@ package com.atguigu.gulimall.order.controller;
 import java.util.Arrays;
 import java.util.Map;
 
-//import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,9 +20,9 @@ import com.atguigu.common.utils.R;
 /**
  * 退款信息
  *
- * @author chen
- * @email 15149157257@sina.cn
- * @date 2020-10-06 17:38:21
+ * @author mxg
+ * @email mxg@gmail.com
+ * @date 2020-12-16 12:03:44
  */
 @RestController
 @RequestMapping("order/refundinfo")
@@ -35,7 +34,6 @@ public class RefundInfoController {
      * 列表
      */
     @RequestMapping("/list")
-    //@RequiresPermissions("order:refundinfo:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = refundInfoService.queryPage(params);
 
@@ -47,7 +45,6 @@ public class RefundInfoController {
      * 信息
      */
     @RequestMapping("/info/{id}")
-    //@RequiresPermissions("order:refundinfo:info")
     public R info(@PathVariable("id") Long id){
 		RefundInfoEntity refundInfo = refundInfoService.getById(id);
 
@@ -58,7 +55,6 @@ public class RefundInfoController {
      * 保存
      */
     @RequestMapping("/save")
-    //@RequiresPermissions("order:refundinfo:save")
     public R save(@RequestBody RefundInfoEntity refundInfo){
 		refundInfoService.save(refundInfo);
 
@@ -69,7 +65,6 @@ public class RefundInfoController {
      * 修改
      */
     @RequestMapping("/update")
-    //@RequiresPermissions("order:refundinfo:update")
     public R update(@RequestBody RefundInfoEntity refundInfo){
 		refundInfoService.updateById(refundInfo);
 
@@ -80,7 +75,6 @@ public class RefundInfoController {
      * 删除
      */
     @RequestMapping("/delete")
-    //@RequiresPermissions("order:refundinfo:delete")
     public R delete(@RequestBody Long[] ids){
 		refundInfoService.removeByIds(Arrays.asList(ids));
 

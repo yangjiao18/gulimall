@@ -10,9 +10,9 @@ import lombok.Data;
 /**
  * spu属性值
  * 
- * @author chen
- * @email 15149157257@sina.cn
- * @date 2020-10-06 17:03:30
+ * @author mxg
+ * @email mxg@gmail.com
+ * @date 2020-12-21 11:53:38
  */
 @Data
 @TableName("pms_product_attr_value")

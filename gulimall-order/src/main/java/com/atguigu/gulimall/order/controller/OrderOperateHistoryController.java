@@ -3,7 +3,6 @@ package com.atguigu.gulimall.order.controller;
 import java.util.Arrays;
 import java.util.Map;
 
-//import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,9 +20,9 @@ import com.atguigu.common.utils.R;
 /**
  * 订单操作历史记录
  *
- * @author chen
- * @email 15149157257@sina.cn
- * @date 2020-10-06 17:38:21
+ * @author mxg
+ * @email mxg@gmail.com
+ * @date 2020-12-16 12:03:44
  */
 @RestController
 @RequestMapping("order/orderoperatehistory")
@@ -35,7 +34,6 @@ public class OrderOperateHistoryController {
      * 列表
      */
     @RequestMapping("/list")
-    //@RequiresPermissions("order:orderoperatehistory:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = orderOperateHistoryService.queryPage(params);
 
@@ -47,7 +45,6 @@ public class OrderOperateHistoryController {
      * 信息
      */
     @RequestMapping("/info/{id}")
-    //@RequiresPermissions("order:orderoperatehistory:info")
     public R info(@PathVariable("id") Long id){
 		OrderOperateHistoryEntity orderOperateHistory = orderOperateHistoryService.getById(id);
 
@@ -58,7 +55,6 @@ public class OrderOperateHistoryController {
      * 保存
      */
     @RequestMapping("/save")
-    //@RequiresPermissions("order:orderoperatehistory:save")
     public R save(@RequestBody OrderOperateHistoryEntity orderOperateHistory){
 		orderOperateHistoryService.save(orderOperateHistory);
 
@@ -69,7 +65,6 @@ public class OrderOperateHistoryController {
      * 修改
      */
     @RequestMapping("/update")
-    //@RequiresPermissions("order:orderoperatehistory:update")
     public R update(@RequestBody OrderOperateHistoryEntity orderOperateHistory){
 		orderOperateHistoryService.updateById(orderOperateHistory);
 
@@ -80,7 +75,6 @@ public class OrderOperateHistoryController {
      * 删除
      */
     @RequestMapping("/delete")
-    //@RequiresPermissions("order:orderoperatehistory:delete")
     public R delete(@RequestBody Long[] ids){
 		orderOperateHistoryService.removeByIds(Arrays.asList(ids));
 

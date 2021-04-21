@@ -9,9 +9,9 @@ import java.util.Map;
 /**
  * 首页专题表【jd首页下面很多专题，每个专题链接新的页面，展示专题商品信息】
  *
- * @author chen
- * @email 15149157257@sina.cn
- * @date 2020-10-06 17:48:49
+ * @author mxg
+ * @email mxg@gmail.com
+ * @date 2020-12-16 11:38:31
  */
 public interface HomeSubjectService extends IService<HomeSubjectEntity> {
 

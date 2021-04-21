@@ -1,19 +1,21 @@
 package com.atguigu.gulimall.search.config;
 
 import org.apache.http.HttpHost;
-import org.elasticsearch.client.HttpAsyncResponseConsumerFactory;
-import org.elasticsearch.client.RequestOptions;
-import org.elasticsearch.client.RestClient;
-import org.elasticsearch.client.RestHighLevelClient;
+import org.elasticsearch.client.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @author gxl
- * @date 2020/6/6 - 12:03
+ * @author 孟享广
+ * @date 2021-01-02 11:41 上午
+ * @description
+ * 1 导入依赖
+ * 2 编写配置 给容器中注入一个RestHighLevelClient
+ * 3 参API
  */
+
 @Configuration
-public class GuliMallElasticSearchConfig {
+public class GulimallElasticSearchConfig {
 
     public static final RequestOptions COMMON_OPTIONS;
     static {
@@ -26,12 +28,12 @@ public class GuliMallElasticSearchConfig {
     }
 
     @Bean
-    public RestHighLevelClient esRestClient(){
-        RestHighLevelClient client = new RestHighLevelClient(
-                RestClient.builder(
-                        //String hostname, int port, String scheme
-                        new HttpHost("192.168.56.10", 9200, "http")));
-
+    public RestHighLevelClient esRestClient() {
+        RestClientBuilder builder = RestClient.builder(
+                new HttpHost("10.211.55.3", 9200, "http")
+//                        new HttpHost("localhost", 9201, "http")
+        );
+        RestHighLevelClient client = new RestHighLevelClient(builder);
         return client;
     }
 }

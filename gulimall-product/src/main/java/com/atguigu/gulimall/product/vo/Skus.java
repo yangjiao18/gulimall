@@ -30,4 +30,6 @@ public class Skus {
     private BigDecimal reducePrice;
     private int priceStatus;
     private List<MemberPrice> memberPrice;
+
+
 }

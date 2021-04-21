@@ -3,19 +3,15 @@ package com.atguigu.gulimall.product.vo;
 import lombok.Data;
 
 /**
- * @author gxl
- * @date 2020/5/30 - 23:04
+ * @author 孟享广
+ * @date 2020-12-23 3:51 下午
+ * @description
  */
+
 @Data
 public class AttrRespVo extends AttrVo{
-  /**
-  * @author gxl
-  * @Date 23:06 2020/5/30
-  * catelogName 手机/数码/手机，  //所属分类名字
-  * groupName 主体， //所属分组名字
-  */
+    private String catelogName;
+    private String groupName;
 
-  private String catelogName;
-  private String groupName;
-  private Long[] catelogPath;
+    private Long catelogPath[];
 }

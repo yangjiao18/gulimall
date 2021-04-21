@@ -1,18 +1,21 @@
 package com.atguigu.gulimall.product.vo;
 
-import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
 /**
- * @author gxl
- * @date 2020/5/25 - 20:09
+ * @author 孟享广
+ * @date 2020-12-23 3:01 下午
+ * @description
  */
 @Data
 public class AttrVo {
+    private static final long serialVersionUID = 1L;
+
     /**
      * 属性id
+     * 在vo中就不要用跟数据库有关的注解了
      */
-
+//    @TableId
     private Long attrId;
     /**
      * 属性名
@@ -47,5 +50,5 @@ public class AttrVo {
      */
     private Integer showDesc;
 
-	private Long attrGroupId;
+    private Long attrGroupId;
 }

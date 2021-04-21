@@ -3,7 +3,6 @@ package com.atguigu.gulimall.coupon.controller;
 import java.util.Arrays;
 import java.util.Map;
 
-//import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,9 +20,9 @@ import com.atguigu.common.utils.R;
 /**
  * 首页轮播广告
  *
- * @author chen
- * @email 15149157257@sina.cn
- * @date 2020-10-06 17:48:49
+ * @author mxg
+ * @email mxg@gmail.com
+ * @date 2020-12-16 11:38:31
  */
 @RestController
 @RequestMapping("coupon/homeadv")
@@ -35,7 +34,6 @@ public class HomeAdvController {
      * 列表
      */
     @RequestMapping("/list")
-    //@RequiresPermissions("coupon:homeadv:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = homeAdvService.queryPage(params);
 
@@ -47,7 +45,6 @@ public class HomeAdvController {
      * 信息
      */
     @RequestMapping("/info/{id}")
-    //@RequiresPermissions("coupon:homeadv:info")
     public R info(@PathVariable("id") Long id){
 		HomeAdvEntity homeAdv = homeAdvService.getById(id);
 
@@ -58,7 +55,6 @@ public class HomeAdvController {
      * 保存
      */
     @RequestMapping("/save")
-    //@RequiresPermissions("coupon:homeadv:save")
     public R save(@RequestBody HomeAdvEntity homeAdv){
 		homeAdvService.save(homeAdv);
 
@@ -69,7 +65,6 @@ public class HomeAdvController {
      * 修改
      */
     @RequestMapping("/update")
-    //@RequiresPermissions("coupon:homeadv:update")
     public R update(@RequestBody HomeAdvEntity homeAdv){
 		homeAdvService.updateById(homeAdv);
 
@@ -80,7 +75,6 @@ public class HomeAdvController {
      * 删除
      */
     @RequestMapping("/delete")
-    //@RequiresPermissions("coupon:homeadv:delete")
     public R delete(@RequestBody Long[] ids){
 		homeAdvService.removeByIds(Arrays.asList(ids));
 

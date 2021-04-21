@@ -3,14 +3,13 @@ package com.atguigu.gulimall.product.vo;
 import lombok.Data;
 
 /**
- * @author gxl
- * "brandId":0,
- * "brandName":"string",
- * @date 2020/5/31 - 3:22
+ * @author 孟享广
+ * @date 2020-12-24 5:42 下午
+ * @description
  */
 @Data
 public class BrandVo {
-
     private Long brandId;
     private String brandName;
+
 }

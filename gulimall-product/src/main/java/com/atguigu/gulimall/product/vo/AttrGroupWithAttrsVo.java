@@ -1,18 +1,18 @@
 package com.atguigu.gulimall.product.vo;
 
 import com.atguigu.gulimall.product.entity.AttrEntity;
+import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
 import java.util.List;
 
 /**
- * @author gxl
- * @date 2020/5/31 - 3:51
+ * @author 孟享广
+ * @date 2020-12-25 10:57 上午
+ * @description
  */
 @Data
 public class AttrGroupWithAttrsVo {
-
-
     /**
      * 分组id
      */

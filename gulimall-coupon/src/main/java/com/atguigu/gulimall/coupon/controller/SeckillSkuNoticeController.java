@@ -3,7 +3,6 @@ package com.atguigu.gulimall.coupon.controller;
 import java.util.Arrays;
 import java.util.Map;
 
-//import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,9 +20,9 @@ import com.atguigu.common.utils.R;
 /**
  * 秒杀商品通知订阅
  *
- * @author chen
- * @email 15149157257@sina.cn
- * @date 2020-10-06 17:48:49
+ * @author mxg
+ * @email mxg@gmail.com
+ * @date 2020-12-16 11:38:31
  */
 @RestController
 @RequestMapping("coupon/seckillskunotice")
@@ -35,7 +34,6 @@ public class SeckillSkuNoticeController {
      * 列表
      */
     @RequestMapping("/list")
-    //@RequiresPermissions("coupon:seckillskunotice:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = seckillSkuNoticeService.queryPage(params);
 
@@ -47,7 +45,6 @@ public class SeckillSkuNoticeController {
      * 信息
      */
     @RequestMapping("/info/{id}")
-    //@RequiresPermissions("coupon:seckillskunotice:info")
     public R info(@PathVariable("id") Long id){
 		SeckillSkuNoticeEntity seckillSkuNotice = seckillSkuNoticeService.getById(id);
 
@@ -58,7 +55,6 @@ public class SeckillSkuNoticeController {
      * 保存
      */
     @RequestMapping("/save")
-    //@RequiresPermissions("coupon:seckillskunotice:save")
     public R save(@RequestBody SeckillSkuNoticeEntity seckillSkuNotice){
 		seckillSkuNoticeService.save(seckillSkuNotice);
 
@@ -69,7 +65,6 @@ public class SeckillSkuNoticeController {
      * 修改
      */
     @RequestMapping("/update")
-    //@RequiresPermissions("coupon:seckillskunotice:update")
     public R update(@RequestBody SeckillSkuNoticeEntity seckillSkuNotice){
 		seckillSkuNoticeService.updateById(seckillSkuNotice);
 
@@ -80,7 +75,6 @@ public class SeckillSkuNoticeController {
      * 删除
      */
     @RequestMapping("/delete")
-    //@RequiresPermissions("coupon:seckillskunotice:delete")
     public R delete(@RequestBody Long[] ids){
 		seckillSkuNoticeService.removeByIds(Arrays.asList(ids));
 

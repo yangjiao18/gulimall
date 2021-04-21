@@ -1,6 +1,9 @@
 package com.atguigu.gulimall.thirdparty.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.aliyun.oss.OSS;
+import com.aliyun.oss.OSSClient;
+import com.aliyun.oss.OSSClientBuilder;
 import com.aliyun.oss.common.utils.BinaryUtil;
 import com.aliyun.oss.model.MatchMode;
 import com.aliyun.oss.model.PolicyConditions;
@@ -15,32 +18,33 @@ import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ * @author 孟享广
+ * @date 2020-12-22 10:09 上午
+ * @description
+ */
 @RestController
 public class OssController {
 
     @Autowired
     OSS ossClient;
 
-    //动态获取
     @Value("${spring.cloud.alicloud.oss.endpoint}")
     private String endpoint;
     @Value("${spring.cloud.alicloud.oss.bucket}")
     private String bucket;
-
     @Value("${spring.cloud.alicloud.access-key}")
     private String accessId;
 
     @RequestMapping("/oss/policy")
     public R policy() {
+        //https://gulimall-hello-3.oss-cn-beijing.aliyuncs.com/a.jpg
 
-        //https://gulimall-hello.oss-cn-beijing.aliyuncs.com/hahaha.jpg
-        // host的格式为 bucketname.endpoint
-        String host = "https://" + bucket + "." + endpoint;
+        String host = "https://" + bucket + "." + endpoint; // host的格式为 bucketname.endpoint
         // callbackUrl为 上传回调服务器的URL，请将下面的IP和Port配置为您自己的真实信息。
-        //String callbackUrl = "http://88.88.88.88:8888";
+//        String callbackUrl = "http://88.88.88.88:8888";
         String format = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-        // 用户上传文件时指定的前缀。
-        String dir = format + "/";
+        String dir = format + "/"; // 用户上传文件时指定的前缀。
 
         Map<String, String> respMap = null;
         try {
@@ -70,7 +74,7 @@ public class OssController {
             // Assert.fail(e.getMessage());
             System.out.println(e.getMessage());
         }
-
-        return R.ok().put("data",respMap);
+        return R.ok().put("data", respMap);
+//        return respMap;
     }
 }

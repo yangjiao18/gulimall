@@ -3,7 +3,6 @@ package com.atguigu.gulimall.coupon.controller;
 import java.util.Arrays;
 import java.util.Map;
 
-//import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,9 +20,9 @@ import com.atguigu.common.utils.R;
 /**
  * 秒杀活动
  *
- * @author chen
- * @email 15149157257@sina.cn
- * @date 2020-10-06 17:48:49
+ * @author mxg
+ * @email mxg@gmail.com
+ * @date 2020-12-16 11:38:31
  */
 @RestController
 @RequestMapping("coupon/seckillpromotion")
@@ -35,7 +34,6 @@ public class SeckillPromotionController {
      * 列表
      */
     @RequestMapping("/list")
-    //@RequiresPermissions("coupon:seckillpromotion:list")
     public R list(@RequestParam Map<String, Object> params){
         PageUtils page = seckillPromotionService.queryPage(params);
 
@@ -47,7 +45,6 @@ public class SeckillPromotionController {
      * 信息
      */
     @RequestMapping("/info/{id}")
-    //@RequiresPermissions("coupon:seckillpromotion:info")
     public R info(@PathVariable("id") Long id){
 		SeckillPromotionEntity seckillPromotion = seckillPromotionService.getById(id);
 
@@ -58,7 +55,6 @@ public class SeckillPromotionController {
      * 保存
      */
     @RequestMapping("/save")
-    //@RequiresPermissions("coupon:seckillpromotion:save")
     public R save(@RequestBody SeckillPromotionEntity seckillPromotion){
 		seckillPromotionService.save(seckillPromotion);
 
@@ -69,7 +65,6 @@ public class SeckillPromotionController {
      * 修改
      */
     @RequestMapping("/update")
-    //@RequiresPermissions("coupon:seckillpromotion:update")
     public R update(@RequestBody SeckillPromotionEntity seckillPromotion){
 		seckillPromotionService.updateById(seckillPromotion);
 
@@ -80,7 +75,6 @@ public class SeckillPromotionController {
      * 删除
      */
     @RequestMapping("/delete")
-    //@RequiresPermissions("coupon:seckillpromotion:delete")
     public R delete(@RequestBody Long[] ids){
 		seckillPromotionService.removeByIds(Arrays.asList(ids));
 

@@ -5,18 +5,18 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.3.RELEASE</version>
+        <version>2.1.8.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.atguigu.gulimall</groupId>
     <artifactId>gulimall-gateway</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>gulimall-gateway</name>
-    <description>谷粒商城-网关</description>
+    <description>API网关</description>
 
     <properties>
         <java.version>1.8</java.version>
-        <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
+        <spring-cloud.version>Greenwich.SR3</spring-cloud.version>
     </properties>
 
     <dependencies>
@@ -26,8 +26,19 @@
             <version>0.0.1-SNAPSHOT</version>
             <exclusions>
                 <exclusion>
+                    <!-- 因为不操作数据库 故排除 mybatis-plus-->
                     <groupId>com.baomidou</groupId>
                     <artifactId>mybatis-plus-boot-starter</artifactId>
+                </exclusion>
+                <exclusion>
+                    <!-- 因为不操作数据库 故排除 druid-->
+                    <groupId>com.alibaba</groupId>
+                    <artifactId>druid-spring-boot-starter</artifactId>
+                </exclusion>
+                <!-- 排除seata分布式事务-->
+                <exclusion>
+                    <groupId>com.alibaba.cloud</groupId>
+                    <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
@@ -35,18 +46,39 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway</artifactId>
+            <version>2.1.1.RELEASE</version>
+        </dependency>
+
+        <!--  nacos 服务注册中心 发现中心-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+            <version>2.1.1.RELEASE</version>
+        </dependency>
+        <!--        配置中心 作配置管理-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+            <version>2.1.1.RELEASE</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.junit.vintage</groupId>
-                    <artifactId>junit-vintage-engine</artifactId>
-                </exclusion>
-            </exclusions>
+        </dependency>
+
+        <!--引入 actuator统计审计信息 配合sentinel management.endpoints.web.exposure.include=* -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <!-- 引入 sentinel跟网管层的整合 -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-alibaba-sentinel-gateway</artifactId>
+            <version>2.1.0.RELEASE</version>
         </dependency>
     </dependencies>
 
@@ -59,6 +91,12 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <!--        负载均衡-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-loadbalancer</artifactId>
+                <version>3.0.0-M6</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -70,5 +108,13 @@
             </plugin>
         </plugins>
     </build>
+
+    <repositories>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+        </repository>
+    </repositories>
 
 </project>
