@@ -11,5 +11,12 @@ import java.util.List;
  * @description
  */
 public interface ProductService {
+    /**
+     * productStatusUp
+     *
+     * @param skuEsModels
+     * @return
+     * @throws IOException
+     */
     boolean productStatusUp(List<SkuEsModel> skuEsModels) throws IOException;
 }

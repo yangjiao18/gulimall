@@ -10,5 +10,11 @@ import com.atguigu.gulimall.search.vo.SearchResult;
  */
 public interface MallSearchService {
 
+    /**
+     * es search
+     *
+     * @param param
+     * @return
+     */
     SearchResult search(SearchParam param);
 }

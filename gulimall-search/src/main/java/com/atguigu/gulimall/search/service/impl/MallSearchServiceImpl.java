@@ -37,6 +37,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import javax.annotation.Resource;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -53,7 +54,7 @@ import java.util.stream.Collectors;
 @Service
 public class MallSearchServiceImpl implements MallSearchService {
 
-    @Autowired
+    @Resource
     RestHighLevelClient client;
 
     @Autowired
@@ -117,8 +118,10 @@ public class MallSearchServiceImpl implements MallSearchService {
                 BoolQueryBuilder nestBoolQuery = QueryBuilders.boolQuery();
                 //attr = 1_5寸:8寸
                 String[] s = attrStr.split("_");
-                String attrId = s[0];//检索的属性id
-                String[] attrValues = s[1].split(":");//检索的属性值
+                //检索的属性id
+                String attrId = s[0];
+                //检索的属性值
+                String[] attrValues = s[1].split(":");
                 nestBoolQuery.must(QueryBuilders.termQuery("attrs.attrId", attrId));
                 nestBoolQuery.must(QueryBuilders.termsQuery("attrs.attrValue", attrValues));
                 //每一个都必须生成一个nested查询
@@ -257,11 +260,13 @@ public class MallSearchServiceImpl implements MallSearchService {
             attrVo.setAttrId(attrId);
             //子聚合 得到属性名 Aggregation -> ParsedStringTerms
             ParsedStringTerms attr_name_agg = bucket.getAggregations().get("attr_name_agg");
-            String attrName = attr_name_agg.getBuckets().get(0).getKeyAsString();//因为这个属性不是List
+            //因为这个属性不是List
+            String attrName = attr_name_agg.getBuckets().get(0).getKeyAsString();
             attrVo.setAttrName(attrName);
             //子聚合 复杂 得到属性值 Aggregation -> ParsedStringTerms
             ParsedStringTerms attr_value_agg = bucket.getAggregations().get("attr_value_agg");
-            List<String> attrValues = attr_value_agg.getBuckets().stream().map((item) -> { //因为这个属性是List
+            //因为这个属性是List
+            List<String> attrValues = attr_value_agg.getBuckets().stream().map((item) -> {
                 return item.getKeyAsString();
             }).collect(Collectors.toList());
             attrVo.setAttrValue(attrValues);
@@ -281,11 +286,12 @@ public class MallSearchServiceImpl implements MallSearchService {
             brandVo.setBrandId(brandId);
             //子聚合 得到品牌名 Aggregation -> ParsedStringTerms
             ParsedStringTerms brand_name_agg = bucket.getAggregations().get("brand_name_agg");
-            String brandName = brand_name_agg.getBuckets().get(0).getKeyAsString();//因为这个属性不是List
+            //因为这个属性不是List
+            String brandName = brand_name_agg.getBuckets().get(0).getKeyAsString();
             brandVo.setBrandName(brandName);
             //子聚合 得到品牌图片
             ParsedStringTerms brand_img_agg = bucket.getAggregations().get("brand_img_agg");
-            String brandImg = brand_img_agg.getBuckets().get(0).getKeyAsString();//因为这个属性不是List
+            String brandImg = brand_img_agg.getBuckets().get(0).getKeyAsString();
             brandVo.setBrandImg(brandImg);
 
             brandVos.add(brandVo);
@@ -303,7 +309,7 @@ public class MallSearchServiceImpl implements MallSearchService {
             catalogVo.setCatalogId(Long.parseLong(keyAsString));
             //子聚合 得到分类名 Aggregation -> ParsedStringTerms
             ParsedStringTerms catalog_name_agg = bucket.getAggregations().get("catalog_name_agg");
-            String catalog_name = catalog_name_agg.getBuckets().get(0).getKeyAsString();//因为这个属性不是List
+            String catalog_name = catalog_name_agg.getBuckets().get(0).getKeyAsString();
             catalogVo.setCatalogName(catalog_name);
 
             catalogVos.add(catalogVo);
@@ -381,7 +387,7 @@ public class MallSearchServiceImpl implements MallSearchService {
         return result;
     }
 
-    //编写面包屑的功能时，删除指定请求
+
     private String replaceQueryString(SearchParam param, String value, String key) {
         String encode = "";
         try {
