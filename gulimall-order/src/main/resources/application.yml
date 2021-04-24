@@ -53,7 +53,7 @@ spring:
     date-format: yyyy-MM-dd HH:mm:ss
   #配置Zipkin链路追踪可视化展示
   zipkin:
-    base-url: http://10.211.55.3:9411/
+    base-url: http://192.168.0.151:9411 /
     #关闭自己的服务发现功能
     discovery-client-enabled: false
     sender:

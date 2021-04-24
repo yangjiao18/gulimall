@@ -121,20 +121,15 @@ public class GulimallSearchApplicationTests {
     @Test
     public void indexData() throws IOException {
         IndexRequest indexRequest = new IndexRequest("users");
-
         indexRequest.id("1");
-
-//        indexRequest.source("username", "zhangsan", "age", 18, "gender", "男");
         User user = new User();
         user.setUserName("zhangsan");
         user.setAge(18);
         user.setGender("男");
         String jsonString = JSON.toJSONString(user);
         indexRequest.source(jsonString, XContentType.JSON);//要保存的内容
-
         //执行真正的保存操作
         IndexResponse index = client.index(indexRequest, GuliMallElasticSearchConfig.COMMON_OPTIONS);
-
         //提取有用的相应数据
         System.out.println(index);
     }
