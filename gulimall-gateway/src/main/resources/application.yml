@@ -14,7 +14,14 @@ spring:
           response-status: 400
     gateway:
       routes:
-#product /hello为压力测试
+        #renrenfast
+        - id: admin_route
+          uri: lb://renren-fast
+          predicates:
+            - Path=/api/**
+          filters:
+            - RewritePath=/api/(?<segment>.*), /renren-fast/$\{segment}
+        #product /hello为压力测试
         - id: product_route
           uri: lb://gulimall-product
           predicates:
@@ -109,13 +116,13 @@ spring:
           uri: lb://gulimall-seckill
           predicates:
             - Host=seckill.gulimall.com
-##前段项目，/api
-## http://localhost:88/api/captcha.jpg   http://localhost:8080/renren-fast/captcha.jpg
-## http://localhost:88/api/product/category/list/tree http://localhost:10000/product/category/list/tree
+  ##前段项目，/api
+  ## http://localhost:88/api/captcha.jpg   http://localhost:8080/renren-fast/captcha.jpg
+  ## http://localhost:88/api/product/category/list/tree http://localhost:10000/product/category/list/tree
 
   #配置Zipkin链路追踪可视化展示
   zipkin:
-    base-url: http://192.168.0.151:9411 /
+    base-url: http://192.168.2.151:9411 /
     #关闭自己的服务发现功能
     discovery-client-enabled: false
     sender:

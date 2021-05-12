@@ -5,18 +5,18 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 192.168.0.151:8848
+        server-addr: 192.168.2.151:8848
     #配置sentinel
     sentinel:
       transport:
-        dashboard: 192.168.0.151:8858
+        dashboard: 192.168.2.151:8858
         #控制台的port
         port: 8719
   application:
     name: gulimall-seckill
   #配置Redis缓存
   redis:
-    host: 192.168.0.151
+    host: 192.168.2.151
     port: 6379
   #整合Spring Session 指定session是存到redis里
   session:
@@ -29,7 +29,7 @@ spring:
         max-size: 50
   #配置rabbitmq
   rabbitmq:
-    host: 192.168.0.151
+    host: 192.168.2.151
     port: 5672
     virtual-host: /
     #开启发送端确认 发送的过程中
@@ -49,7 +49,7 @@ spring:
     #cache: true
   #配置Zipkin链路追踪可视化展示
   zipkin:
-    base-url: http://192.168.0.151:9411/
+    base-url: http://192.168.2.151:9411/
     #关闭自己的服务发现功能
     discovery-client-enabled: false
     sender:

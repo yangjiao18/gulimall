@@ -5,7 +5,7 @@ spring:
 #    type: com.alibaba.druid.pool.DruidDataSource
 #    druid:
 #      driver-class-name: com.mysql.cj.jdbc.Driver
-#      url: jdbc:mysql://192.168.0.151:3306/gulimall_sms?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+#      url: jdbc:mysql://192.168.2.151:3306/gulimall_sms?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
 #      username: root
 #      password: root
 ##      Nacos 注册中心
@@ -18,7 +18,7 @@ spring:
         port: 8719
 #    nacos:
 #      discovery:
-#        server-addr: 192.168.0.151:8848
+#        server-addr: 192.168.2.151:8848
 #  application:
 #    name: gulimall-coupon
 #
@@ -31,7 +31,7 @@ spring:
 #      id-type: auto
   #配置Zipkin链路追踪可视化展示
   zipkin:
-    base-url: http://192.168.0.151:9411 /
+    base-url: http://192.168.2.151:9411 /
     #关闭自己的服务发现功能
     discovery-client-enabled: false
     sender:
